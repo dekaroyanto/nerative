@@ -5,6 +5,7 @@ import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import Portfolio from "@/components/Portfolio";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <Services />
       <WhyUs />
+      <Portfolio />
       <CTA />
       <Footer />
     </main>
