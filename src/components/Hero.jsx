@@ -23,7 +23,7 @@ const Hero = () => {
           </motion.div>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
             Tingkatkan{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
               Bisnis Anda
             </span>{" "}
             Secara Digital
@@ -36,7 +36,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-400 to-teal-400 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 shadow-md"
+              className="bg-linear-to-r from-blue-400 to-teal-400 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 shadow-md"
             >
               Mulai Sekarang <ArrowRight size={18} />
             </motion.button>
@@ -63,19 +63,19 @@ const Hero = () => {
             className="flex items-center gap-6 mt-8"
           >
             <div className="flex -space-x-2">
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-md text-sm">
+              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-md text-sm">
                 😊
               </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-md text-sm">
+              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-green-400 to-green-600 flex items-center justify-center shadow-md text-sm">
                 🚀
               </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center shadow-md text-sm">
+              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-pink-400 to-pink-600 flex items-center justify-center shadow-md text-sm">
                 💡
               </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-md text-sm">
+              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-md text-sm">
                 ⭐
               </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center text-white text-xs font-bold shadow-md">
+              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-gray-400 to-gray-600 flex items-center justify-center text-white text-xs font-bold shadow-md">
                 +
               </div>
             </div>
