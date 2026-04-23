@@ -198,9 +198,6 @@ const Footer = () => {
           className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm"
         >
           <p>© 2025 Nerative. All rights reserved.</p>
-          <p className="text-xs mt-1 text-gray-600">
-            Dibangun dengan ❤️ untuk mendukung pertumbuhan bisnis digital Anda
-          </p>
         </motion.div>
       </div>
     </footer>

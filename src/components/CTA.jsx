@@ -49,16 +49,19 @@ const CTA = () => {
   };
 
   return (
-    <section id="kontak" className="relative py-24 px-6 overflow-hidden">
+    <section
+      id="kontak"
+      className="relative py-24 px-4 md:px-6 overflow-hidden"
+    >
       {/* Background dengan efek modern */}
       <div className="absolute inset-0 -z-20">
-        <div className="absolute inset-0 bg-linear-to-br from-blue-50 via-indigo-50/30 to-cyan-50" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-linear-to-r from-blue-200/30 to-cyan-200/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-linear-to-r from-purple-200/30 to-pink-200/30 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50/30 to-cyan-50" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-r from-blue-200/30 to-cyan-200/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-purple-200/30 to-pink-200/30 rounded-full blur-3xl animate-pulse delay-1000" />
         <div
           className="absolute inset-0 opacity-30"
           style={{
-            backgroundImage: `radial-linear(circle, rgba(59,130,246,0.2) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, rgba(59,130,246,0.2) 1px, transparent 1px)`,
             backgroundSize: "24px 24px",
           }}
         />
@@ -70,37 +73,37 @@ const CTA = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 px-2"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-full text-sm font-semibold mb-4 shadow-lg"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full text-sm font-semibold mb-4 shadow-lg"
           >
             <Send size={16} />
             Hubungi Kami
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
             Siap Membawa Bisnis Anda
           </h2>
-          <h2 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent mt-2">
+          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent mt-2">
             ke Level Berikutnya?
           </h2>
-          <div className="w-24 h-1 bg-linear-to-r from-blue-500 via-cyan-400 to-purple-500 mx-auto mt-6 rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 mx-auto mt-6 rounded-full" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {/* Left Section - Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8 border border-white/20 hover:shadow-2xl transition-all duration-300"
+            className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-6 md:p-8 border border-white/20 hover:shadow-2xl transition-all duration-300"
           >
             {/* Testimonial/Stats */}
-            <div className="mb-8">
-              <p className="text-gray-600 leading-relaxed text-lg">
+            <div className="mb-6 md:mb-8">
+              <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                 Jangan ragu untuk menghubungi tim kami. Kami akan dengan senang
                 hati membantu Anda menemukan solusi digital terbaik untuk bisnis
                 Anda.
@@ -108,24 +111,24 @@ const CTA = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-5">
-              <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <div className="w-1 h-6 bg-linear-to-r from-blue-500 to-cyan-500 rounded-full" />
+            <div className="space-y-4 md:space-y-5">
+              <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <div className="w-1 h-5 md:h-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full" />
                 Informasi Kontak
               </h3>
 
               <motion.div
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-4 group cursor-pointer"
+                className="flex items-center gap-3 md:gap-4 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-linear-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <Mail size={20} className="text-white" />
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <Mail size={18} className="text-white md:w-5 md:h-5" />
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wide">
                     Email
                   </p>
-                  <span className="text-gray-700 font-medium">
+                  <span className="text-gray-700 font-medium text-sm md:text-base">
                     nerative.contact@gmail.com
                   </span>
                 </div>
@@ -133,7 +136,7 @@ const CTA = () => {
 
               <motion.div
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-4 group cursor-pointer"
+                className="flex items-center gap-3 md:gap-4 group cursor-pointer"
                 onClick={() => {
                   window.open(
                     "https://wa.me/62882006487100?text=Halo%20Nerative%2C%20saya%20ingin%20konsultasi%20mengenai%20layanan%20digital",
@@ -141,14 +144,14 @@ const CTA = () => {
                   );
                 }}
               >
-                <div className="w-12 h-12 bg-linear-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <Phone size={20} className="text-white" />
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <Phone size={18} className="text-white md:w-5 md:h-5" />
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wide">
                     Telepon / WhatsApp
                   </p>
-                  <span className="text-gray-700 font-medium">
+                  <span className="text-gray-700 font-medium text-sm md:text-base">
                     0882006487100
                   </span>
                 </div>
@@ -156,16 +159,16 @@ const CTA = () => {
 
               <motion.div
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-4 group cursor-pointer"
+                className="flex items-center gap-3 md:gap-4 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-linear-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <MapPin size={20} className="text-white" />
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <MapPin size={18} className="text-white md:w-5 md:h-5" />
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wide">
                     Alamat
                   </p>
-                  <span className="text-gray-700 font-medium">
+                  <span className="text-gray-700 font-medium text-sm md:text-base">
                     Kota Cirebon, Indonesia
                   </span>
                 </div>
@@ -173,9 +176,9 @@ const CTA = () => {
             </div>
 
             {/* Working Hours */}
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <div className="flex items-center gap-3 text-sm text-gray-500">
-                <Clock size={16} className="text-blue-500" />
+            <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-gray-200">
+              <div className="flex items-center gap-3 text-xs md:text-sm text-gray-500">
+                <Clock size={14} className="text-blue-500 md:w-4 md:h-4" />
                 <span>Senin - Minggu: 09:00 - 18:00 WIB</span>
               </div>
             </div>
@@ -189,14 +192,19 @@ const CTA = () => {
             className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300"
           >
             {/* Form Header */}
-            <div className="bg-linear-to-r from-blue-500 to-cyan-500 px-8 py-6">
-              <h3 className="text-2xl font-bold text-white mb-2">
+            <div className="bg-gradient-to-r from-blue-500 to-cyan-500 px-6 md:px-8 py-5 md:py-6">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">
                 Kirim Pesan
               </h3>
-              <p className="text-blue-100">Kami akan merespon dalam 1x24 jam</p>
+              <p className="text-blue-100 text-sm md:text-base">
+                Kami akan merespon dalam 1x24 jam
+              </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-8 space-y-5">
+            <form
+              onSubmit={handleSubmit}
+              className="p-6 md:p-8 space-y-4 md:space-y-5"
+            >
               <div className="relative">
                 <input
                   type="text"
@@ -205,9 +213,9 @@ const CTA = () => {
                   onChange={handleChange}
                   required
                   placeholder=" "
-                  className="w-full px-4 pt-5 pb-2 rounded-xl border border-gray-200 focus:border-blue-400 focus:outline-none transition-all peer"
+                  className="w-full px-4 pt-5 pb-2 rounded-xl border border-gray-200 focus:border-blue-400 focus:outline-none transition-all peer text-sm md:text-base"
                 />
-                <label className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 transition-all peer-focus:text-xs peer-focus:-translate-y-5 peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-5">
+                <label className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm md:text-base transition-all peer-focus:text-xs peer-focus:-translate-y-5 peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-5">
                   Nama Lengkap
                 </label>
               </div>
@@ -220,9 +228,9 @@ const CTA = () => {
                   onChange={handleChange}
                   required
                   placeholder=" "
-                  className="w-full px-4 pt-5 pb-2 rounded-xl border border-gray-200 focus:border-blue-400 focus:outline-none transition-all peer"
+                  className="w-full px-4 pt-5 pb-2 rounded-xl border border-gray-200 focus:border-blue-400 focus:outline-none transition-all peer text-sm md:text-base"
                 />
-                <label className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 transition-all peer-focus:text-xs peer-focus:-translate-y-5 peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-5">
+                <label className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm md:text-base transition-all peer-focus:text-xs peer-focus:-translate-y-5 peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-5">
                   Email
                 </label>
               </div>
@@ -233,11 +241,11 @@ const CTA = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows="4"
+                  rows={4}
                   placeholder=" "
-                  className="w-full px-4 pt-5 pb-2 rounded-xl border border-gray-200 focus:border-blue-400 focus:outline-none transition-all peer resize-none"
+                  className="w-full px-4 pt-5 pb-2 rounded-xl border border-gray-200 focus:border-blue-400 focus:outline-none transition-all peer resize-none text-sm md:text-base"
                 />
-                <label className="absolute left-4 top-4 text-gray-400 transition-all peer-focus:text-xs peer-focus:-top-2 peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-2">
+                <label className="absolute left-4 top-4 text-gray-400 text-sm md:text-base transition-all peer-focus:text-xs peer-focus:-top-2 peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-2">
                   Pesan
                 </label>
               </div>
@@ -246,7 +254,7 @@ const CTA = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="relative w-full bg-linear-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-xl font-semibold overflow-hidden group"
+                className="relative w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-xl font-semibold overflow-hidden group text-sm md:text-base"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   {isSubmitted ? (
@@ -261,7 +269,7 @@ const CTA = () => {
                     </>
                   )}
                 </span>
-                <div className="absolute inset-0 bg-linear-to-r from-teal-500 to-green-500 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-green-500 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
               </motion.button>
             </form>
           </motion.div>

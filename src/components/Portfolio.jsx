@@ -3,43 +3,37 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
-import { AiOutlineGithub } from "react-icons/ai";
+import Image from "next/image";
 
 const portfolioItems = [
   {
     id: 1,
-    title: "E-Commerce Fashion Store",
+    title: "Barbershop Booking Website",
     category: "Website Development",
     description:
-      "Platform e-commerce modern untuk brand fashion dengan fitur payment gateway, wishlist, dan sistem review produk.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    tags: ["Next.js", "Tailwind CSS", "Midtrans"],
-    link: "#",
+      "Situs web ini menyajikan layanan potong rambut pria, tukang cukur yang tersedia, dan detail harga. Pelanggan dapat memilih tukang cukur pilihan mereka dan dengan mudah memesan janji temu untuk pengalaman yang lancar dan personal.",
+    image: "/portfolio/barber.png",
+    link: "https://fadebarbershop.vercel.app/",
     github: "#",
   },
   {
     id: 2,
-    title: "Marketplace Management Dashboard",
-    category: "Admin Marketplace",
+    title: "Nail Art Service Website",
+    category: "Website Development",
     description:
-      "Dashboard komprehensif untuk mengelola penjualan di Shopee, Tokopedia, dan TikTok Shop dalam satu platform.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    tags: ["React", "Express.js", "MongoDB"],
-    link: "#",
+      "Situs web ini menampilkan layanan nail art, koleksi desain, dan detail harga. Pelanggan dapat menjelajahi berbagai gaya dan dengan mudah memesan janji temu melalui WhatsApp untuk pengalaman yang cepat dan nyaman.",
+    image: "/portfolio/nailart.png",
+    link: "https://nailart-roy.vercel.app/",
     github: "#",
   },
   {
     id: 3,
-    title: "Digital Ads Campaign",
-    category: "Digital Advertising",
+    title: "Kost Website",
+    category: "Website Development",
     description:
-      "Strategi iklan Google & Meta yang berhasil meningkatkan konversi sebesar 200% untuk brand lokal.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-    tags: ["Google Ads", "Meta Ads", "Analytics"],
-    link: "#",
+      "Situs web ini memberikan gambaran umum tentang kost, termasuk pratinjau kamar, fasilitas yang tersedia, dan harga yang transparan. Pengguna dapat dengan mudah menjelajahi detail dan memesan kamar langsung melalui WhatsApp untuk proses reservasi yang cepat dan sederhana.",
+    image: "/portfolio/deriskost.png",
+    link: "https://deriskost.vercel.app/",
     github: "#",
   },
   {
@@ -47,23 +41,19 @@ const portfolioItems = [
     title: "Corporate Company Profile",
     category: "Website Development",
     description:
-      "Website company profile modern dengan animasi halus dan optimasi SEO untuk perusahaan manufaktur.",
-    image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-    tags: ["WordPress", "Elementor", "SEO"],
-    link: "#",
+      "Situs web ini adalah platform resmi perusahaan yang menampilkan promosi produk, diskon eksklusif, penawaran paket, dan manfaat bagi pelanggan. Pengunjung dapat menjelajahi penawaran terbaru, mempelajari tentang program loyalitas, dan mengakses opsi pembelian yang mudah dengan dukungan konsultasi langsung.",
+    image: "/portfolio/cbs.png",
+    link: "https://columbus-majalengka.vercel.app/",
     github: "#",
   },
   {
     id: 5,
-    title: "Social Media Management",
-    category: "Digital Advertising",
+    title: "Business Consultant Wuling",
+    category: "Website Development",
     description:
-      "Manajemen media sosial yang meningkatkan engagement 150% dalam 3 bulan untuk brand kecantikan.",
-    image:
-      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=400&fit=crop",
-    tags: ["Content Strategy", "Social Media", "Analytics"],
-    link: "#",
+      "Website ini adalah platform resmi Wuling Bali Business Consultant, yang menyediakan informasi penjualan mobil, penawaran terbaru, simulator kredit, dan konsultasi WhatsApp.",
+    image: "/portfolio/wuling.png",
+    link: "https://ydewmobilbarubali.my.id/",
     github: "#",
   },
 ];
@@ -71,8 +61,8 @@ const portfolioItems = [
 const Portfolio = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [dragStart, setDragStart] = useState(0);
-  const [dragEnd, setDragEnd] = useState(0);
+  const dragStartX = useRef(0);
+  const dragEndX = useRef(0);
   const cardRef = useRef(null);
 
   const nextSlide = () => {
@@ -93,21 +83,17 @@ const Portfolio = () => {
   };
 
   const handleDragStart = (e) => {
-    setDragStart(e.clientX || e.touches[0].clientX);
+    dragStartX.current = e.clientX || e.touches[0].clientX;
   };
 
   const handleDragEnd = (e) => {
-    const endX = e.clientX || e.changedTouches[0].clientX;
-    setDragEnd(endX);
-
-    const dragDistance = dragEnd - dragStart;
+    dragEndX.current = e.clientX || e.changedTouches[0].clientX;
+    const dragDistance = dragEndX.current - dragStartX.current;
 
     if (Math.abs(dragDistance) > 50) {
       if (dragDistance > 0) {
-        // Swipe kanan -> prev slide
         prevSlide();
       } else {
-        // Swipe kiri -> next slide
         nextSlide();
       }
     }
@@ -133,7 +119,7 @@ const Portfolio = () => {
   return (
     <section
       id="portfolio"
-      className="py-20 px-6 bg-linear-to-b from-gray-50 to-white"
+      className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -146,13 +132,13 @@ const Portfolio = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
             Portfolio Terbaru
           </h2>
-          <div className="w-20 h-1 bg-linear-to-r from-blue-500 to-cyan-400 mx-auto mt-4 rounded-full" />
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-4 rounded-full" />
           <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
             Beberapa proyek yang telah kami selesaikan untuk klien kami
           </p>
         </motion.div>
 
-        {/* Carousel with Drag */}
+        {/* Carousel dengan drag langsung pindah */}
         <div className="relative flex items-center gap-4">
           {/* Left Arrow */}
           <button
@@ -162,7 +148,7 @@ const Portfolio = () => {
             <ChevronLeft size={24} className="text-gray-600" />
           </button>
 
-          {/* Main Card - Bisa di-drag */}
+          {/* Main Card - Bisa di-drag langsung pindah */}
           <div
             ref={cardRef}
             className="flex-1 overflow-hidden cursor-grab active:cursor-grabbing"
@@ -180,41 +166,36 @@ const Portfolio = () => {
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.3 },
+                  x: { type: "tween", duration: 0.3 },
+                  opacity: { duration: 0.2 },
                 }}
                 className="bg-white rounded-3xl shadow-xl overflow-hidden"
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.1}
-                onDragEnd={(e, { offset }) => {
-                  if (offset.x > 50) {
-                    prevSlide();
-                  } else if (offset.x < -50) {
-                    nextSlide();
-                  }
-                }}
               >
-                <div className="grid md:grid-cols-2 gap-0">
-                  {/* Image */}
-                  <div className="relative h-64 md:h-full min-h-[400px] overflow-hidden">
-                    <img
-                      src={currentItem.image}
-                      alt={currentItem.title}
-                      className="w-full h-full object-cover pointer-events-none"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-tr from-blue-500/20 to-transparent pointer-events-none" />
+                <div className="flex flex-col md:flex-row">
+                  {/* Image - Full width dengan aspect ratio yang tepat */}
+                  <div className="relative w-full md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-200">
+                    <div className="relative w-full pt-[75%] md:pt-[100%]">
+                      <Image
+                        src={currentItem.image}
+                        alt={currentItem.title}
+                        fill
+                        className="object-cover pointer-events-none"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent pointer-events-none" />
                   </div>
 
                   {/* Content */}
-                  <div className="p-8 md:p-10">
+                  <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
                     <span className="text-sm text-blue-500 font-semibold uppercase tracking-wide">
                       {currentItem.category}
                     </span>
                     <h3 className="text-xl md:text-2xl font-bold text-gray-800 mt-2 mb-4">
                       {currentItem.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed mb-6">
+                    <p className="text-gray-600 leading-relaxed mb-6 line-clamp-4">
                       {currentItem.description}
                     </p>
 
@@ -224,7 +205,7 @@ const Portfolio = () => {
                         href={currentItem.link}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 px-6 py-2.5 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-shadow"
+                        className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-shadow"
                       >
                         <ExternalLink size={20} />
                         Lihat Proyek
@@ -245,22 +226,6 @@ const Portfolio = () => {
           </button>
         </div>
 
-        {/* Mobile Arrows */}
-        {/* <div className="flex justify-center gap-4 mt-6 md:hidden">
-          <button
-            onClick={prevSlide}
-            className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
-          >
-            <ChevronLeft size={20} className="text-gray-600" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
-          >
-            <ChevronRight size={20} className="text-gray-600" />
-          </button>
-        </div> */}
-
         {/* Dots Indicator */}
         <div className="flex justify-center gap-2 mt-8">
           {portfolioItems.map((_, idx) => (
@@ -269,7 +234,7 @@ const Portfolio = () => {
               onClick={() => goToSlide(idx)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 idx === currentIndex
-                  ? "w-8 bg-linear-to-r from-blue-500 to-cyan-400"
+                  ? "w-8 bg-gradient-to-r from-blue-500 to-cyan-400"
                   : "w-2 bg-gray-300 hover:bg-gray-400"
               }`}
             />

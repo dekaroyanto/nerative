@@ -16,23 +16,26 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Fungsi untuk smooth scroll ke section
-  const smoothScrollTo = (elementId, e) => {
-    e.preventDefault();
+  // Smooth scroll (fix mobile issue + delay)
+  const smoothScrollTo = (elementId) => {
     const element = document.getElementById(elementId);
+
     if (element) {
-      const navbarHeight = 80; // Tinggi navbar
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.pageYOffset - navbarHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-
-      // Tutup mobile menu setelah klik
+      // Tutup menu dulu
       setIsMobileMenuOpen(false);
+
+      // Delay biar DOM update dulu (hindari bug mobile)
+      setTimeout(() => {
+        const navbarHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }, 200);
     }
   };
 
@@ -53,11 +56,12 @@ const Navbar = () => {
         isScrolled ? "bg-white/80 backdrop-blur-lg shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+        {/* Logo */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent cursor-pointer"
-          onClick={(e) => smoothScrollTo("beranda", e)}
+          onClick={() => smoothScrollTo("beranda")}
         >
           Nerative
         </motion.div>
@@ -65,21 +69,20 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 items-center">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.name}
-              href={`#${link.id}`}
-              onClick={(e) => smoothScrollTo(link.id, e)}
+              onClick={() => smoothScrollTo(link.id)}
               className="text-gray-600 hover:text-blue-500 transition-colors duration-200 font-medium relative group"
             >
               {link.name}
-              {/* Underline animation */}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
-            </a>
+            </button>
           ))}
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={(e) => smoothScrollTo("kontak", e)}
+            onClick={() => smoothScrollTo("kontak")}
             className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-shadow"
           >
             Konsultasi Gratis
@@ -89,7 +92,8 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-gray-600"
+          className="md:hidden text-gray-600 z-50"
+          aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -102,22 +106,23 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 backdrop-blur-lg border-t"
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white/95 backdrop-blur-lg border-t shadow-lg"
           >
             <div className="flex flex-col gap-4 p-6">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.name}
-                  href={`#${link.id}`}
-                  onClick={(e) => smoothScrollTo(link.id, e)}
-                  className="text-gray-600 hover:text-blue-500 transition-colors py-2 text-lg"
+                  onClick={() => smoothScrollTo(link.id)}
+                  className="text-left text-gray-600 hover:text-blue-500 transition-colors py-3 text-lg border-b border-gray-100 last:border-0"
                 >
                   {link.name}
-                </a>
+                </button>
               ))}
+
               <button
-                onClick={(e) => smoothScrollTo("kontak", e)}
-                className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-5 py-2 rounded-full font-medium w-full"
+                onClick={() => smoothScrollTo("kontak")}
+                className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-5 py-3 rounded-full font-medium w-full mt-2 shadow-md"
               >
                 Konsultasi Gratis
               </button>

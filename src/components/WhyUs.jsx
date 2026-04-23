@@ -35,6 +35,15 @@ const features = [
     bgColor: "bg-cyan-50",
   },
 ];
+const handleWhatsApp = () => {
+  const phoneNumber = "62882006487100";
+  const message =
+    "Halo Nerative, saya ingin berkonsultasi mengenai layanan digital";
+  window.open(
+    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+    "_blank",
+  );
+};
 
 const WhyUs = () => {
   return (
@@ -172,6 +181,7 @@ const WhyUs = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={handleWhatsApp}
               className="group inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Konsultasi Sekarang
