@@ -131,7 +131,10 @@ const Portfolio = () => {
   const currentItem = portfolioItems[currentIndex];
 
   return (
-    <section className="py-20 px-6 bg-linear-to-b from-gray-50 to-white">
+    <section
+      id="portfolio"
+      className="py-20 px-6 bg-linear-to-b from-gray-50 to-white"
+    >
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

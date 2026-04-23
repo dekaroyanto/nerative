@@ -1,12 +1,12 @@
 // components/Hero.jsx
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Star } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section id="layanan" className="pt-25 pb-20 px-6 max-w-7xl mx-auto">
+    <section id="beranda" className="pt-25 pb-20 px-6 max-w-7xl mx-auto">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -22,7 +22,7 @@ const Hero = () => {
             Solusi Digital Terpercaya
           </motion.div>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
-            Tingkatkan{" "}
+            Kembangkan{" "}
             <span className="bg-linear-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
               Bisnis Anda
             </span>{" "}
@@ -61,40 +61,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
             className="flex items-center gap-6 mt-8"
-          >
-            <div className="flex -space-x-2">
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-md text-sm">
-                😊
-              </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-green-400 to-green-600 flex items-center justify-center shadow-md text-sm">
-                🚀
-              </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-pink-400 to-pink-600 flex items-center justify-center shadow-md text-sm">
-                💡
-              </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-md text-sm">
-                ⭐
-              </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-linear-to-br from-gray-400 to-gray-600 flex items-center justify-center text-white text-xs font-bold shadow-md">
-                +
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    size={14}
-                    className="fill-yellow-400 text-yellow-400"
-                  />
-                ))}
-                <span className="text-sm font-semibold text-gray-700 ml-1">
-                  4.9
-                </span>
-              </div>
-              <p className="text-xs text-gray-500">Penilaian Klien</p>
-            </div>
-          </motion.div>
+          ></motion.div>
         </motion.div>
 
         <motion.div
