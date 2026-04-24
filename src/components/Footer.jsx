@@ -2,34 +2,40 @@
 "use client";
 import { motion } from "framer-motion";
 import { BsWhatsapp, BsInstagram } from "react-icons/bs";
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Footer = () => {
-  // Fungsi untuk smooth scroll ke section
-  const smoothScrollTo = (elementId, e) => {
-    if (e) e.preventDefault();
-    const element = document.getElementById(elementId);
-    if (element) {
-      const navbarHeight = 80; // Tinggi navbar
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.pageYOffset - navbarHeight;
+  const pathname = usePathname();
+  const router = useRouter();
+  const isBlogPage = pathname?.startsWith("/blog") || pathname?.startsWith("/admin");
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+  // Fungsi untuk navigasi ke homepage dan scroll ke section tertentu
+  const navigateToSection = (sectionId) => {
+    // Jika sedang di halaman blog, pindah ke homepage dulu
+    if (isBlogPage) {
+      router.push(`/#${sectionId}`);
+    } else {
+      // Jika sudah di homepage, langsung scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
   // Fungsi untuk handle link WhatsApp
   const handleWhatsApp = () => {
     const phoneNumber = "62882006487100";
-    const message =
-      "Halo Nerative, saya ingin berkonsultasi mengenai layanan digital";
-    window.open(
-      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
-      "_blank",
-    );
+    const message = "Halo Nerative, saya ingin berkonsultasi mengenai layanan digital";
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   // Fungsi untuk handle link Instagram
@@ -48,9 +54,20 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-              Nerative
-            </h3>
+            <button
+              onClick={() => {
+                if (isBlogPage) {
+                  router.push("/");
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="text-left cursor-pointer"
+            >
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+                Nerative
+              </h3>
+            </button>
             <p className="text-gray-400 text-sm mt-2 leading-relaxed">
               Solusi digital terpercaya untuk pertumbuhan bisnis Anda.
             </p>
@@ -66,31 +83,28 @@ const Footer = () => {
             <h4 className="font-semibold mb-3 text-lg">Layanan</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>
-                <a
-                  href="#layanan"
-                  onClick={(e) => smoothScrollTo("layanan", e)}
-                  className="hover:text-blue-400 transition-colors duration-200 inline-block"
+                <button
+                  onClick={() => navigateToSection("layanan")}
+                  className="hover:text-blue-400 transition-colors duration-200 cursor-pointer"
                 >
                   Pembuatan Website
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#layanan"
-                  onClick={(e) => smoothScrollTo("layanan", e)}
-                  className="hover:text-blue-400 transition-colors duration-200 inline-block"
+                <button
+                  onClick={() => navigateToSection("layanan")}
+                  className="hover:text-blue-400 transition-colors duration-200 cursor-pointer"
                 >
                   Admin Marketplace
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#layanan"
-                  onClick={(e) => smoothScrollTo("layanan", e)}
-                  className="hover:text-blue-400 transition-colors duration-200 inline-block"
+                <button
+                  onClick={() => navigateToSection("layanan")}
+                  className="hover:text-blue-400 transition-colors duration-200 cursor-pointer"
                 >
                   Digital Advertising
-                </a>
+                </button>
               </li>
             </ul>
           </motion.div>
@@ -105,49 +119,52 @@ const Footer = () => {
             <h4 className="font-semibold mb-3 text-lg">Quick Link</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>
-                <a
-                  href="#beranda"
-                  onClick={(e) => smoothScrollTo("beranda", e)}
-                  className="hover:text-blue-400 transition-colors duration-200 inline-block"
+                <button
+                  onClick={() => navigateToSection("beranda")}
+                  className="hover:text-blue-400 transition-colors duration-200 cursor-pointer"
                 >
                   Beranda
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#layanan"
-                  onClick={(e) => smoothScrollTo("layanan", e)}
-                  className="hover:text-blue-400 transition-colors duration-200 inline-block"
+                <button
+                  onClick={() => navigateToSection("layanan")}
+                  className="hover:text-blue-400 transition-colors duration-200 cursor-pointer"
                 >
                   Layanan
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#keunggulan"
-                  onClick={(e) => smoothScrollTo("keunggulan", e)}
-                  className="hover:text-blue-400 transition-colors duration-200 inline-block"
+                <button
+                  onClick={() => navigateToSection("keunggulan")}
+                  className="hover:text-blue-400 transition-colors duration-200 cursor-pointer"
                 >
                   Keunggulan
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#portofolio"
-                  onClick={(e) => smoothScrollTo("portofolio", e)}
-                  className="hover:text-blue-400 transition-colors duration-200 inline-block"
+                <button
+                  onClick={() => navigateToSection("portfolio")}
+                  className="hover:text-blue-400 transition-colors duration-200 cursor-pointer"
                 >
                   Portfolio
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#kontak"
-                  onClick={(e) => smoothScrollTo("kontak", e)}
-                  className="hover:text-blue-400 transition-colors duration-200 inline-block"
+                <button
+                  onClick={() => navigateToSection("kontak")}
+                  className="hover:text-blue-400 transition-colors duration-200 cursor-pointer"
                 >
                   Kontak
-                </a>
+                </button>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="hover:text-blue-400 transition-colors duration-200 inline-block"
+                >
+                  Blog
+                </Link>
               </li>
             </ul>
           </motion.div>
@@ -162,29 +179,39 @@ const Footer = () => {
             <h4 className="font-semibold mb-3 text-lg">Kontak Kami</h4>
             <div className="space-y-3">
               <div className="flex gap-4">
-                <motion.a
+                <motion.button
                   whileHover={{ y: -3, scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleWhatsApp}
-                  className="text-gray-400 hover:text-green-400 transition-all duration-200 cursor-pointer inline-block"
+                  className="text-gray-400 hover:text-green-400 transition-all duration-200 cursor-pointer"
                 >
                   <BsWhatsapp size={24} />
-                </motion.a>
-                <motion.a
+                </motion.button>
+                <motion.button
                   whileHover={{ y: -3, scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleInstagram}
-                  className="text-gray-400 hover:text-pink-400 transition-all duration-200 cursor-pointer inline-block"
+                  className="text-gray-400 hover:text-pink-400 transition-all duration-200 cursor-pointer"
                 >
                   <BsInstagram size={24} />
-                </motion.a>
+                </motion.button>
               </div>
-              <p className="text-gray-400 text-sm">
-                <span className="block">📞 0882-0064-87100</span>
-                <span className="block mt-1">
-                  ✉️ nerative.contact@gmail.com
-                </span>
-              </p>
+              <div className="text-gray-400 text-sm space-y-2">
+                <button
+                  onClick={handleWhatsApp}
+                  className="flex items-center gap-2 hover:text-blue-400 transition-colors cursor-pointer w-full"
+                >
+                  <span>📞</span>
+                  <span>0882-0064-87100</span>
+                </button>
+                <a
+                  href="mailto:nerative.contact@gmail.com"
+                  className="flex items-center gap-2 hover:text-blue-400 transition-colors"
+                >
+                  <span>✉️</span>
+                  <span>nerative.contact@gmail.com</span>
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
