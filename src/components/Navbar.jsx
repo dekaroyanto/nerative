@@ -3,10 +3,17 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Check if current page is blog or admin
+  const isBlogPage =
+    pathname?.startsWith("/blog") || pathname?.startsWith("/admin");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,12 +47,27 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: "Beranda", id: "beranda" },
-    { name: "Layanan", id: "layanan" },
-    { name: "Keunggulan", id: "keunggulan" },
-    { name: "Portfolio", id: "portfolio" },
-    { name: "Kontak", id: "kontak" },
+    { name: "Beranda", id: "beranda", isScroll: true },
+    { name: "Layanan", id: "layanan", isScroll: true },
+    { name: "Keunggulan", id: "keunggulan", isScroll: true },
+    { name: "Portfolio", id: "portfolio", isScroll: true },
+    { name: "Blog", id: "blog", isScroll: false, href: "/blog" },
+    { name: "Kontak", id: "kontak", isScroll: true },
   ];
+
+  // Handler untuk navigasi (antara scroll atau link)
+  const handleNavigation = (link) => {
+    if (link.isScroll && !isBlogPage) {
+      // Jika di homepage, lakukan smooth scroll
+      smoothScrollTo(link.id);
+    } else if (link.isScroll && isBlogPage) {
+      // Jika di blog page dan ingin ke homepage, redirect dulu
+      window.location.href = `/#${link.id}`;
+    } else if (link.href) {
+      // Navigasi ke halaman lain
+      window.location.href = link.href;
+    }
+  };
 
   return (
     <motion.nav
@@ -61,7 +83,13 @@ const Navbar = () => {
         <motion.div
           whileHover={{ scale: 1.05 }}
           className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent cursor-pointer"
-          onClick={() => smoothScrollTo("beranda")}
+          onClick={() => {
+            if (isBlogPage) {
+              window.location.href = "/";
+            } else {
+              smoothScrollTo("beranda");
+            }
+          }}
         >
           Nerative
         </motion.div>
@@ -71,7 +99,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <button
               key={link.name}
-              onClick={() => smoothScrollTo(link.id)}
+              onClick={() => handleNavigation(link)}
               className="text-gray-600 hover:text-blue-500 transition-colors duration-200 font-medium relative group"
             >
               {link.name}
@@ -82,7 +110,13 @@ const Navbar = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => smoothScrollTo("kontak")}
+            onClick={() => {
+              if (isBlogPage) {
+                window.location.href = "/#kontak";
+              } else {
+                smoothScrollTo("kontak");
+              }
+            }}
             className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-shadow"
           >
             Konsultasi Gratis
@@ -113,7 +147,10 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <button
                   key={link.name}
-                  onClick={() => smoothScrollTo(link.id)}
+                  onClick={() => {
+                    handleNavigation(link);
+                    setIsMobileMenuOpen(false);
+                  }}
                   className="text-left text-gray-600 hover:text-blue-500 transition-colors py-3 text-lg border-b border-gray-100 last:border-0"
                 >
                   {link.name}
@@ -121,7 +158,14 @@ const Navbar = () => {
               ))}
 
               <button
-                onClick={() => smoothScrollTo("kontak")}
+                onClick={() => {
+                  if (isBlogPage) {
+                    window.location.href = "/#kontak";
+                  } else {
+                    smoothScrollTo("kontak");
+                  }
+                  setIsMobileMenuOpen(false);
+                }}
                 className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-5 py-3 rounded-full font-medium w-full mt-2 shadow-md"
               >
                 Konsultasi Gratis
