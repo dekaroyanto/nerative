@@ -51,8 +51,8 @@ const Navbar = () => {
     { name: "Layanan", id: "layanan", isScroll: true },
     { name: "Keunggulan", id: "keunggulan", isScroll: true },
     { name: "Portfolio", id: "portfolio", isScroll: true },
-    { name: "Blog", id: "blog", isScroll: false, href: "/blog" },
     { name: "Kontak", id: "kontak", isScroll: true },
+    { name: "Blog", id: "blog", isScroll: false, href: "/blog" },
   ];
 
   // Handler untuk navigasi (antara scroll atau link)
