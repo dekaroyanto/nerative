@@ -2,6 +2,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export default function CreateBlogPage() {
   const router = useRouter();
@@ -20,7 +22,8 @@ export default function CreateBlogPage() {
     return title
       .toLowerCase()
       .replace(/[^\w\s]/gi, "")
-      .replace(/\s+/g, "-");
+      .replace(/\s+/g, "-")
+      .replace(/^-+|-+$/g, "");
   };
 
   const handleSubmit = async (e) => {
@@ -30,7 +33,16 @@ export default function CreateBlogPage() {
 
     const slug = formData.slug || generateSlug(formData.title);
 
+    if (!slug) {
+      setError("Slug tidak boleh kosong");
+      setLoading(false);
+      return;
+    }
+
     try {
+      console.log("Sending request to:", "/api/admin/blog");
+      console.log("Data:", { ...formData, slug });
+
       const response = await fetch("/api/admin/blog", {
         method: "POST",
         headers: {
@@ -39,15 +51,22 @@ export default function CreateBlogPage() {
         body: JSON.stringify({ ...formData, slug }),
       });
 
+      console.log("Response status:", response.status);
+
       const result = await response.json();
+      console.log("Response data:", result);
 
       if (response.ok) {
         router.push("/admin/blog");
       } else {
-        setError(result.error || "Gagal menyimpan artikel");
+        setError(
+          result.error ||
+            `Gagal menyimpan artikel (Status: ${response.status})`,
+        );
       }
     } catch (err) {
-      setError("Terjadi kesalahan saat menyimpan artikel");
+      console.error("Error details:", err);
+      setError(`Terjadi kesalahan: ${err.message}. Pastikan server berjalan.`);
     } finally {
       setLoading(false);
     }
@@ -56,13 +75,21 @@ export default function CreateBlogPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-20 px-6">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">
-          Buat Artikel Baru
-        </h1>
+        <div className="flex items-center gap-4 mb-6">
+          <Link href="/admin/blog">
+            <button className="flex items-center gap-2 text-gray-600 hover:text-blue-500 transition">
+              <ArrowLeft size={20} />
+              Kembali
+            </button>
+          </Link>
+          <h1 className="text-3xl font-bold text-gray-800">
+            Buat Artikel Baru
+          </h1>
+        </div>
 
         {error && (
           <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-            {error}
+            <strong>Error:</strong> {error}
           </div>
         )}
 
@@ -72,7 +99,7 @@ export default function CreateBlogPage() {
         >
           <div>
             <label className="block text-sm font-medium mb-1">
-              Judul Artikel *
+              Judul Artikel <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -96,6 +123,9 @@ export default function CreateBlogPage() {
               placeholder="Kosongkan untuk generate otomatis"
               className="w-full px-4 py-2 border rounded-lg focus:border-blue-300 focus:outline-none"
             />
+            <p className="text-xs text-gray-400 mt-1">
+              Contoh: cara-memulai-bisnis-online
+            </p>
           </div>
 
           <div>
@@ -129,7 +159,7 @@ export default function CreateBlogPage() {
 
           <div>
             <label className="block text-sm font-medium mb-1">
-              Konten (Markdown) *
+              Konten (Markdown) <span className="text-red-500">*</span>
             </label>
             <textarea
               rows="15"
@@ -167,7 +197,7 @@ export default function CreateBlogPage() {
             <button
               type="button"
               onClick={() => router.back()}
-              className="border border-gray-300 px-6 py-2 rounded-lg"
+              className="border border-gray-300 px-6 py-2 rounded-lg hover:bg-gray-50 transition"
             >
               Batal
             </button>
