@@ -16,6 +16,42 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata = {
+  title: {
+    default: "Nerative - Solusi Digital untuk Bisnis Modern",
+    template: "%s | Nerative",
+  },
+  description:
+    "Nerative menyediakan jasa pembuatan website profesional, admin marketplace Shopee/TikTok/Lazada, dan digital advertising untuk mengembangkan bisnis Anda.",
+  keywords: [
+    "jasa pembuatan website",
+    "admin marketplace",
+    "digital advertising",
+    "Shopee seller",
+    "TikTok shop",
+    "Lazada seller",
+    "jasa iklan online",
+    "bisnis digital",
+    "UMKM digital",
+  ],
+  authors: [{ name: "Nerative Team" }],
+  creator: "Nerative",
+  publisher: "Nerative",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  category: "technology",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html
