@@ -15,6 +15,9 @@ export default function CreateBlogPage() {
     content: "",
     excerpt: "",
     featured_image: "",
+    author_name: "Admin",
+    author_bio:
+      "Content writer dan digital marketing enthusiast yang berbagi tips seputar bisnis digital.",
     is_published: true,
   });
 
@@ -24,6 +27,13 @@ export default function CreateBlogPage() {
       .replace(/[^\w\s]/gi, "")
       .replace(/\s+/g, "-")
       .replace(/^-+|-+$/g, "");
+  };
+
+  const getInitials = (name) => {
+    if (!name) return "AD";
+    const names = name.split(" ");
+    if (names.length === 1) return names[0].substring(0, 2).toUpperCase();
+    return (names[0][0] + names[names.length - 1][0]).toUpperCase();
   };
 
   const handleSubmit = async (e) => {
@@ -40,9 +50,6 @@ export default function CreateBlogPage() {
     }
 
     try {
-      console.log("Sending request to:", "/api/admin/blog");
-      console.log("Data:", { ...formData, slug });
-
       const response = await fetch("/api/admin/blog", {
         method: "POST",
         headers: {
@@ -51,26 +58,22 @@ export default function CreateBlogPage() {
         body: JSON.stringify({ ...formData, slug }),
       });
 
-      console.log("Response status:", response.status);
-
       const result = await response.json();
-      console.log("Response data:", result);
 
       if (response.ok) {
         router.push("/admin/blog");
       } else {
-        setError(
-          result.error ||
-            `Gagal menyimpan artikel (Status: ${response.status})`,
-        );
+        setError(result.error || "Gagal menyimpan artikel");
       }
     } catch (err) {
-      console.error("Error details:", err);
-      setError(`Terjadi kesalahan: ${err.message}. Pastikan server berjalan.`);
+      console.error("Error:", err);
+      setError("Terjadi kesalahan saat menyimpan artikel");
     } finally {
       setLoading(false);
     }
   };
+
+  const authorInitials = getInitials(formData.author_name);
 
   return (
     <div className="min-h-screen bg-gray-50 py-20 px-6">
@@ -89,7 +92,7 @@ export default function CreateBlogPage() {
 
         {error && (
           <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-            <strong>Error:</strong> {error}
+            {error}
           </div>
         )}
 
@@ -128,6 +131,50 @@ export default function CreateBlogPage() {
             </p>
           </div>
 
+          {/* Author Section */}
+          <div className="border-t pt-4 mt-2">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              Informasi Penulis
+            </h3>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Nama Penulis <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                required
+                value={formData.author_name}
+                onChange={(e) =>
+                  setFormData({ ...formData, author_name: e.target.value })
+                }
+                placeholder="Contoh: Deka Royanto"
+                className="w-full px-4 py-2 border rounded-lg focus:border-blue-300 focus:outline-none"
+              />
+              <p className="text-xs text-gray-400 mt-1">
+                Avatar akan menggunakan inisial:{" "}
+                <span className="font-mono bg-gray-100 px-1 rounded">
+                  {authorInitials}
+                </span>
+              </p>
+            </div>
+
+            <div className="mt-4">
+              <label className="block text-sm font-medium mb-1">
+                Bio Penulis
+              </label>
+              <textarea
+                rows="3"
+                value={formData.author_bio}
+                onChange={(e) =>
+                  setFormData({ ...formData, author_bio: e.target.value })
+                }
+                placeholder="Tuliskan biodata singkat penulis..."
+                className="w-full px-4 py-2 border rounded-lg focus:border-blue-300 focus:outline-none"
+              />
+            </div>
+          </div>
+
           <div>
             <label className="block text-sm font-medium mb-1">
               Excerpt (Ringkasan)
@@ -155,6 +202,19 @@ export default function CreateBlogPage() {
               placeholder="https://images.unsplash.com/..."
               className="w-full px-4 py-2 border rounded-lg focus:border-blue-300 focus:outline-none"
             />
+            {formData.featured_image && (
+              <div className="mt-2">
+                <img
+                  src={formData.featured_image}
+                  alt="Preview"
+                  className="w-32 h-32 object-cover rounded-lg"
+                  onError={(e) => {
+                    e.target.src =
+                      "https://placehold.co/400x300?text=Invalid+Image+URL";
+                  }}
+                />
+              </div>
+            )}
           </div>
 
           <div>

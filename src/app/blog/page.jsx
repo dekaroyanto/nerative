@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Calendar, User, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getInitials } from "@/utils/getInitials";
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
@@ -43,7 +44,6 @@ export default function BlogPage() {
     <>
       <Navbar />
       <main className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,18 +51,17 @@ export default function BlogPage() {
         >
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
             Blog{" "}
-            <span className="bg-linear-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
               Nerative
             </span>
           </h1>
-          <div className="w-20 h-1 bg-linear-to-r from-blue-500 to-cyan-400 mx-auto mt-4 rounded-full" />
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-4 rounded-full" />
           <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
             Artikel terbaru seputar digital marketing, pengembangan website, dan
             tips sukses berbisnis online
           </p>
         </motion.div>
 
-        {/* Search Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -78,7 +77,6 @@ export default function BlogPage() {
           />
         </motion.div>
 
-        {/* Blog Grid */}
         {loading ? (
           <div className="flex justify-center py-20">
             <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
@@ -109,16 +107,24 @@ export default function BlogPage() {
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>
                   <div className="p-6">
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                      <span className="flex items-center gap-1">
-                        <Calendar size={14} />
-                        {new Date(post.published_at).toLocaleDateString(
-                          "id-ID",
-                        )}
-                      </span>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xs font-bold">
+                        {getInitials(post.author_name)}
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-800">
+                          {post.author_name || "Admin"}
+                        </p>
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <Calendar size={12} />
+                          {new Date(post.published_at).toLocaleDateString(
+                            "id-ID",
+                          )}
+                        </div>
+                      </div>
                     </div>
                     <h2 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
                       {post.title}

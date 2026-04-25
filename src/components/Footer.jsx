@@ -8,7 +8,8 @@ import Link from "next/link";
 const Footer = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const isBlogPage = pathname?.startsWith("/blog") || pathname?.startsWith("/admin");
+  const isBlogPage =
+    pathname?.startsWith("/blog") || pathname?.startsWith("/admin");
 
   // Fungsi untuk navigasi ke homepage dan scroll ke section tertentu
   const navigateToSection = (sectionId) => {
@@ -21,8 +22,9 @@ const Footer = () => {
       if (element) {
         const navbarHeight = 80;
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-        
+        const offsetPosition =
+          elementPosition + window.pageYOffset - navbarHeight;
+
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
@@ -34,8 +36,12 @@ const Footer = () => {
   // Fungsi untuk handle link WhatsApp
   const handleWhatsApp = () => {
     const phoneNumber = "62882006487100";
-    const message = "Halo Nerative, saya ingin berkonsultasi mengenai layanan digital";
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
+    const message =
+      "Halo Nerative, saya ingin berkonsultasi mengenai layanan digital";
+    window.open(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+      "_blank",
+    );
   };
 
   // Fungsi untuk handle link Instagram
@@ -224,7 +230,7 @@ const Footer = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm"
         >
-          <p>© 2025 Nerative. All rights reserved.</p>
+          <p>© 2026 Nerative. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>

@@ -1,17 +1,16 @@
 // app/blog/[slug]/page.jsx
 "use client";
-
 import { useState, useEffect, use } from "react";
 import { motion } from "framer-motion";
-import { Calendar, User, ArrowLeft, Share2, Bookmark } from "lucide-react";
+import { Calendar, ArrowLeft, Share2, Bookmark } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "@/lib/supabaseClient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getInitials } from "@/utils/getInitials";
 
 export default function BlogDetailPage({ params }) {
-  // ✅ Unwrap params dengan React.use()
   const { slug } = use(params);
 
   const [post, setPost] = useState(null);
@@ -25,7 +24,6 @@ export default function BlogDetailPage({ params }) {
   async function fetchPost() {
     setLoading(true);
 
-    // Fetch current post
     const { data: postData, error: postError } = await supabase
       .from("posts")
       .select("*")
@@ -41,7 +39,6 @@ export default function BlogDetailPage({ params }) {
 
     setPost(postData);
 
-    // Fetch related posts (same author or recent)
     if (postData) {
       const { data: relatedData } = await supabase
         .from("posts")
@@ -91,6 +88,8 @@ export default function BlogDetailPage({ params }) {
     );
   }
 
+  const authorInitials = getInitials(post.author_name);
+
   return (
     <>
       <Navbar />
@@ -108,20 +107,24 @@ export default function BlogDetailPage({ params }) {
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 text-white">
             <div className="max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="flex items-center gap-4 text-sm mb-4"
-              >
-                <span className="flex items-center gap-1">
-                  <Calendar size={16} />
-                  {new Date(post.published_at).toLocaleDateString("id-ID", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </span>
-              </motion.div>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-lg font-bold">
+                  {authorInitials}
+                </div>
+                <div>
+                  <p className="text-white font-semibold text-lg">
+                    {post.author_name || "Admin"}
+                  </p>
+                  <div className="flex items-center gap-2 text-white/80 text-sm">
+                    <Calendar size={14} />
+                    {new Date(post.published_at).toLocaleDateString("id-ID", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </div>
+                </div>
+              </div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -141,7 +144,6 @@ export default function BlogDetailPage({ params }) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            {/* Action Buttons */}
             <div className="flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
               <Link href="/blog">
                 <button className="flex items-center gap-2 text-gray-600 hover:text-blue-500 transition">
@@ -162,10 +164,29 @@ export default function BlogDetailPage({ params }) {
                 >
                   <Share2 size={18} className="text-gray-600" />
                 </button>
+                <button
+                  onClick={() => {
+                    const bookmarks = JSON.parse(
+                      localStorage.getItem("bookmarks") || "[]",
+                    );
+                    if (!bookmarks.includes(post.id)) {
+                      bookmarks.push(post.id);
+                      localStorage.setItem(
+                        "bookmarks",
+                        JSON.stringify(bookmarks),
+                      );
+                      alert("Artikel disimpan ke bookmark!");
+                    } else {
+                      alert("Artikel sudah ada di bookmark");
+                    }
+                  }}
+                  className="p-2 rounded-full hover:bg-gray-100 transition"
+                >
+                  <Bookmark size={18} className="text-gray-600" />
+                </button>
               </div>
             </div>
 
-            {/* Markdown Content */}
             <div className="prose prose-lg prose-blue max-w-none">
               <ReactMarkdown
                 components={{
@@ -230,7 +251,6 @@ export default function BlogDetailPage({ params }) {
                     />
                   ),
                   code: ({ node, inline, className, children, ...props }) => {
-                    const match = /language-(\w+)/.exec(className || "");
                     return !inline ? (
                       <pre className="bg-gray-900 text-gray-100 rounded-lg p-4 my-4 overflow-x-auto">
                         <code className={className} {...props}>
@@ -250,6 +270,24 @@ export default function BlogDetailPage({ params }) {
               >
                 {post.content}
               </ReactMarkdown>
+            </div>
+
+            {/* Author Bio Section */}
+            <div className="mt-12 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                  {authorInitials}
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-800 text-lg">
+                    {post.author_name || "Admin"}
+                  </h4>
+                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                    {post.author_bio ||
+                      "Content writer dan digital marketing enthusiast yang berbagi tips seputar bisnis digital."}
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
