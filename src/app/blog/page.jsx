@@ -9,17 +9,17 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getInitials } from "@/utils/getInitials";
 
-export const metadata = {
-  title: "Blog Digital Marketing & Website Development",
-  description:
-    "Baca artikel terbaru tentang digital marketing, tips mengelola marketplace, pengembangan website, dan strategi bisnis online dari para ahli Sogi.",
-  openGraph: {
-    title: "Blog Sogi | Tips Digital Marketing & Website",
-    description:
-      "Artikel-artikel bermanfaat untuk mengembangkan bisnis digital Anda.",
-    url: "https://sogi.vercel.app/blog",
-  },
-};
+// export const metadata = {
+//   title: "Blog Digital Marketing & Website Development",
+//   description:
+//     "Baca artikel terbaru tentang digital marketing, tips mengelola marketplace, pengembangan website, dan strategi bisnis online dari para ahli Sogi.",
+//   openGraph: {
+//     title: "Blog Sogi | Tips Digital Marketing & Website",
+//     description:
+//       "Artikel-artikel bermanfaat untuk mengembangkan bisnis digital Anda.",
+//     url: "https://sogi.vercel.app/blog",
+//   },
+// };
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
