@@ -4,7 +4,7 @@ export const testimonialsData = [
     name: "Sarah Wijaya",
     role: "Owner, Fashion Brand",
     content:
-      "Nerative benar-benar membantu bisnis saya berkembang pesat. Website dan strategi iklan mereka sangat efektif!",
+      "Sogi benar-benar membantu bisnis saya berkembang pesat. Website dan strategi iklan mereka sangat efektif!",
     rating: 5,
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
@@ -24,7 +24,7 @@ export const testimonialsData = [
     name: "Diana Kartika",
     role: "Marketing Manager",
     content:
-      "Pelayanan cepat, hasil memuaskan. Nerative adalah mitra digital terbaik yang pernah kami miliki.",
+      "Pelayanan cepat, hasil memuaskan. Sogi adalah mitra digital terbaik yang pernah kami miliki.",
     rating: 5,
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",

@@ -91,7 +91,7 @@ const Navbar = () => {
             }
           }}
         >
-          Nerative
+          Sogi
         </motion.div>
 
         {/* Desktop Menu */}

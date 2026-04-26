@@ -12,12 +12,12 @@ import { getInitials } from "@/utils/getInitials";
 export const metadata = {
   title: "Blog Digital Marketing & Website Development",
   description:
-    "Baca artikel terbaru tentang digital marketing, tips mengelola marketplace, pengembangan website, dan strategi bisnis online dari para ahli Nerative.",
+    "Baca artikel terbaru tentang digital marketing, tips mengelola marketplace, pengembangan website, dan strategi bisnis online dari para ahli Sogi.",
   openGraph: {
-    title: "Blog Nerative | Tips Digital Marketing & Website",
+    title: "Blog Sogi | Tips Digital Marketing & Website",
     description:
       "Artikel-artikel bermanfaat untuk mengembangkan bisnis digital Anda.",
-    url: "https://nerative.vercel.app/blog",
+    url: "https://sogi.vercel.app/blog",
   },
 };
 
@@ -64,7 +64,7 @@ export default function BlogPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
             Blog{" "}
             <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-              Nerative
+              Sogi
             </span>
           </h1>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-4 rounded-full" />

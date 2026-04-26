@@ -10,11 +10,11 @@ import Portfolio from "@/components/Portfolio";
 export const metadata = {
   title: "Solusi Digital untuk Bisnis Modern",
   description:
-    "Nerative - Partner terpercaya untuk pembuatan website profesional, pengelolaan marketplace Shopee/TikTok/Lazada, dan strategi digital advertising yang efektif.",
+    "Sogi - Partner terpercaya untuk pembuatan website profesional, pengelolaan marketplace Shopee/TikTok/Lazada, dan strategi digital advertising yang efektif.",
   openGraph: {
-    title: "Nerative - Solusi Digital untuk Bisnis Modern",
+    title: "Sogi - Solusi Digital untuk Bisnis Modern",
     description:
-      "Tingkatkan bisnis Anda dengan layanan digital terbaik dari Nerative.",
+      "Tingkatkan bisnis Anda dengan layanan digital terbaik dari Sogi.",
   },
 };
 

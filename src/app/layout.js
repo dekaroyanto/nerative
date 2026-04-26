@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -18,11 +17,11 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: {
-    default: "Nerative - Solusi Digital untuk Bisnis Modern",
-    template: "%s | Nerative",
+    default: "Sogi - Solusi Digital untuk Bisnis Modern",
+    template: "%s | Sogi",
   },
   description:
-    "Nerative menyediakan jasa pembuatan website profesional, admin marketplace Shopee/TikTok/Lazada, dan digital advertising untuk mengembangkan bisnis Anda.",
+    "Sogi menyediakan jasa pembuatan website profesional, admin marketplace Shopee/TikTok/Lazada, dan digital advertising untuk mengembangkan bisnis Anda.",
   keywords: [
     "jasa pembuatan website",
     "admin marketplace",
@@ -34,9 +33,9 @@ export const metadata = {
     "bisnis digital",
     "UMKM digital",
   ],
-  authors: [{ name: "Nerative Team" }],
-  creator: "Nerative",
-  publisher: "Nerative",
+  authors: [{ name: "Sogi Team" }],
+  creator: "Sogi",
+  publisher: "Sogi",
   robots: {
     index: true,
     follow: true,
@@ -49,11 +48,11 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Nerative - Solusi Digital untuk Bisnis Modern",
+    title: "Sogi - Solusi Digital untuk Bisnis Modern",
     description:
       "Jasa pembuatan website, admin marketplace, dan digital advertising terpercaya untuk bisnis Anda.",
-    url: "https://nerative-official.vercel.app/",
-    siteName: "Nerative",
+    url: "https://sogi.vercel.app/",
+    siteName: "Sogi",
     // images: [
     //   {
     //     url: "https://nerative-official.vercel.app/og-image.jpg",
@@ -67,7 +66,7 @@ export const metadata = {
   },
 
   alternates: {
-    canonical: "https://nerative-official.vercel.app/",
+    canonical: "https://sogi.vercel.app/",
   },
   category: "technology",
 };

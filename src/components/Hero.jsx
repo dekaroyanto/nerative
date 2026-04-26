@@ -29,8 +29,8 @@ const Hero = () => {
             Secara Digital
           </h1>
           <p className="text-gray-500 text-lg mt-6 leading-relaxed">
-            Nerative hadir sebagai partner yang bisa diandalkan untuk bantu
-            bisnis Anda tumbuh secara digital.
+            Sogi hadir sebagai partner yang bisa diandalkan untuk bantu bisnis
+            Anda tumbuh secara digital.
           </p>
           <div className="flex flex-wrap gap-4 mt-8">
             <motion.button

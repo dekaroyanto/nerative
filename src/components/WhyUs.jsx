@@ -38,7 +38,7 @@ const features = [
 const handleWhatsApp = () => {
   const phoneNumber = "62882006487100";
   const message =
-    "Halo Nerative, saya ingin berkonsultasi mengenai layanan digital";
+    "Halo Sogi, saya ingin berkonsultasi mengenai layanan digital";
   window.open(
     `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
     "_blank",
@@ -87,7 +87,7 @@ const WhyUs = () => {
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-            Mengapa Harus Nerative?
+            Mengapa Harus Sogi?
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 mx-auto mt-6 rounded-full" />
           <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">

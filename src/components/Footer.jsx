@@ -37,7 +37,7 @@ const Footer = () => {
   const handleWhatsApp = () => {
     const phoneNumber = "62882006487100";
     const message =
-      "Halo Nerative, saya ingin berkonsultasi mengenai layanan digital";
+      "Halo Sogi, saya ingin berkonsultasi mengenai layanan digital";
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
       "_blank",
@@ -46,7 +46,7 @@ const Footer = () => {
 
   // Fungsi untuk handle link Instagram
   const handleInstagram = () => {
-    window.open("https://instagram.com/nerative", "_blank");
+    window.open("https://instagram.com/sogi", "_blank");
   };
 
   return (
@@ -71,7 +71,7 @@ const Footer = () => {
               className="text-left cursor-pointer"
             >
               <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-                Nerative
+                Sogi
               </h3>
             </button>
             <p className="text-gray-400 text-sm mt-2 leading-relaxed">
@@ -211,11 +211,11 @@ const Footer = () => {
                   <span>0882-0064-87100</span>
                 </button>
                 <a
-                  href="mailto:nerative.contact@gmail.com"
+                  href="mailto:sogi.contact@gmail.com"
                   className="flex items-center gap-2 hover:text-blue-400 transition-colors"
                 >
                   <span>✉️</span>
-                  <span>nerative.contact@gmail.com</span>
+                  <span>sogi.contact@gmail.com</span>
                 </a>
               </div>
             </div>
@@ -230,7 +230,7 @@ const Footer = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm"
         >
-          <p>© 2026 Nerative. All rights reserved.</p>
+          <p>© 2026 Sogi. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>

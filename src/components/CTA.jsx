@@ -25,7 +25,7 @@ const CTA = () => {
 
     // Format pesan untuk WhatsApp
     const phoneNumber = "62882006487100"; // Nomor WhatsApp (tanpa 0, pakai kode negara 62)
-    const message = `Halo Nerative! Saya ingin berkonsultasi.%0A%0A*Nama:* ${formData.name}%0A*Email:* ${formData.email}%0A*Pesan:* ${formData.message}`;
+    const message = `Halo Sogi! Saya ingin berkonsultasi.%0A%0A*Nama:* ${formData.name}%0A*Email:* ${formData.email}%0A*Pesan:* ${formData.message}`;
 
     // Buat URL WhatsApp
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
@@ -129,7 +129,7 @@ const CTA = () => {
                     Email
                   </p>
                   <span className="text-gray-700 font-medium text-sm md:text-base">
-                    nerative.contact@gmail.com
+                    sogi.contact@gmail.com
                   </span>
                 </div>
               </motion.div>
@@ -139,7 +139,7 @@ const CTA = () => {
                 className="flex items-center gap-3 md:gap-4 group cursor-pointer"
                 onClick={() => {
                   window.open(
-                    "https://wa.me/62882006487100?text=Halo%20Nerative%2C%20saya%20ingin%20konsultasi%20mengenai%20layanan%20digital",
+                    "https://wa.me/62882006487100?text=Halo%20Sogi%2C%20saya%20ingin%20konsultasi%20mengenai%20layanan%20digital",
                     "_blank",
                   );
                 }}
