@@ -9,6 +9,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getInitials } from "@/utils/getInitials";
 
+export const metadata = {
+  title: "Blog Digital Marketing & Website Development",
+  description:
+    "Baca artikel terbaru tentang digital marketing, tips mengelola marketplace, pengembangan website, dan strategi bisnis online dari para ahli Nerative.",
+  openGraph: {
+    title: "Blog Nerative | Tips Digital Marketing & Website",
+    description:
+      "Artikel-artikel bermanfaat untuk mengembangkan bisnis digital Anda.",
+    url: "https://nerative.vercel.app/blog",
+  },
+};
+
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);

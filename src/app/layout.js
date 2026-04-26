@@ -48,8 +48,35 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
+  openGraph: {
+    title: "Nerative - Solusi Digital untuk Bisnis Modern",
+    description:
+      "Jasa pembuatan website, admin marketplace, dan digital advertising terpercaya untuk bisnis Anda.",
+    url: "https://nerative-official.vercel.app/",
+    siteName: "Nerative",
+    // images: [
+    //   {
+    //     url: "https://nerative-official.vercel.app/og-image.jpg",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "Nerative - Solusi Digital",
+    //   },
+    // ],
+    locale: "id_ID",
+    type: "website",
+  },
 
+  alternates: {
+    canonical: "https://nerative-official.vercel.app/",
+  },
   category: "technology",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({ children }) {
