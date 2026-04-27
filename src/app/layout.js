@@ -53,14 +53,14 @@ export const metadata = {
       "Jasa pembuatan website, admin marketplace, dan digital advertising terpercaya untuk bisnis Anda.",
     url: "https://sogi.vercel.app/",
     siteName: "Sogi",
-    // images: [
-    //   {
-    //     url: "https://nerative-official.vercel.app/og-image.jpg",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "Nerative - Solusi Digital",
-    //   },
-    // ],
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1777256849726-86bb839f6236?q=80&w=926&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        width: 1200,
+        height: 630,
+        alt: "Sogi - Solusi Digital",
+      },
+    ],
     locale: "id_ID",
     type: "website",
   },
