@@ -71,7 +71,7 @@ const Hero = () => {
           className="relative"
         >
           <Image
-            src="/images/banner/modelamelps.png"
+            src="/images/banner/modelamel.png"
             alt="Team working on digital solutions"
             width={1000}
             height={1000}
