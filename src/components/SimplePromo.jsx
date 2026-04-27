@@ -1,4 +1,4 @@
-// components/SimplePromo.jsx (Versi Biru)
+// components/SimplePromo.jsx (Versi Reset Otomatis 7 Hari - Launching 27 April 2026)
 "use client";
 import { motion } from "framer-motion";
 import { Gift, ArrowRight, Sparkles, Clock, Zap } from "lucide-react";
@@ -6,40 +6,45 @@ import { useState, useEffect } from "react";
 
 const SimplePromo = () => {
   const [timeLeft, setTimeLeft] = useState({
-    days: 7,
+    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
 
   useEffect(() => {
-    // Hitung target date dari localStorage atau buat baru
-    const getTargetDate = () => {
-      let targetDate = localStorage.getItem("promo_target_date");
+    // Fungsi untuk mendapatkan target date berikutnya (setiap 7 hari)
+    const getNextTargetDate = () => {
+      const now = new Date();
+      // Tanggal launching promo: 27 April 2026
+      const startDate = new Date("2026-04-27T00:00:00");
+      const cycleDays = 7;
 
-      if (!targetDate) {
-        // Buat target date 7 hari dari sekarang
-        const newTarget = new Date();
-        newTarget.setDate(newTarget.getDate() + 7);
-        targetDate = newTarget.toISOString();
-        localStorage.setItem("promo_target_date", targetDate);
-      }
+      // Hitung sudah berapa hari dari startDate
+      const diffDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+      const cyclesPassed = Math.floor(diffDays / cycleDays);
 
-      return new Date(targetDate);
+      // Target date = startDate + (cyclesPassed + 1) * cycleDays
+      const nextTarget = new Date(startDate);
+      nextTarget.setDate(startDate.getDate() + (cyclesPassed + 1) * cycleDays);
+      nextTarget.setHours(23, 59, 59, 999);
+
+      return nextTarget;
     };
 
     const updateTimer = () => {
       const now = new Date();
-      let targetDate = getTargetDate();
+      let targetDate = getNextTargetDate();
       let difference = targetDate - now;
 
-      // Jika waktu habis, reset ke 7 hari lagi
       if (difference <= 0) {
-        const newTarget = new Date();
-        newTarget.setDate(newTarget.getDate() + 7);
-        localStorage.setItem("promo_target_date", newTarget.toISOString());
-        targetDate = newTarget;
-        difference = targetDate - now;
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+        return;
       }
 
       setTimeLeft({
