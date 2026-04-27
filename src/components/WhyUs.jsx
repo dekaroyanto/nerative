@@ -36,7 +36,7 @@ const features = [
   },
 ];
 const handleWhatsApp = () => {
-  const phoneNumber = "62882006487100";
+  const phoneNumber = "6285156930246";
   const message =
     "Halo Sogi, saya ingin berkonsultasi mengenai layanan digital";
   window.open(
@@ -140,58 +140,6 @@ const WhyUs = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA Banner dengan desain lebih menarik */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative mt-20 overflow-hidden rounded-3xl"
-        >
-          {/* Background Gradient dengan efek */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-500" />
-
-          {/* Grid pattern - Perbaikan tanda petik */}
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 60 0 L 0 0 0 60' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`,
-            }}
-          />
-
-          {/* Animated particles */}
-          <div className="absolute top-0 left-0 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-pulse" />
-          <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000" />
-
-          <div className="relative p-10 md:p-12 text-center text-white">
-            {/* Icon dekoratif */}
-            <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <Rocket size={32} className="text-white" />
-              </div>
-            </div>
-
-            <p className="text-2xl md:text-3xl font-bold mb-4">
-              Bergabunglah dengan Kami
-            </p>
-            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-              Dapatkan konsultasi gratis dan penawaran menarik untuk bisnis Anda
-            </p>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleWhatsApp}
-              className="group inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Konsultasi Sekarang
-              <ArrowRight
-                size={18}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </motion.button>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

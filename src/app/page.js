@@ -6,6 +6,7 @@ import WhyUs from "@/components/WhyUs";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import Portfolio from "@/components/Portfolio";
+import SimplePromo from "@/components/SimplePromo";
 
 export const metadata = {
   title: "Solusi Digital untuk Bisnis Modern",
@@ -29,6 +30,7 @@ export default function Home() {
       <Services />
       <WhyUs />
       <Portfolio />
+      <SimplePromo />
       <CTA />
       <Footer />
     </main>

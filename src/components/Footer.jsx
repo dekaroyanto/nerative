@@ -35,7 +35,7 @@ const Footer = () => {
 
   // Fungsi untuk handle link WhatsApp
   const handleWhatsApp = () => {
-    const phoneNumber = "62882006487100";
+    const phoneNumber = "6285156930246";
     const message =
       "Halo Sogi, saya ingin berkonsultasi mengenai layanan digital";
     window.open(
@@ -208,14 +208,14 @@ const Footer = () => {
                   className="flex items-center gap-2 hover:text-blue-400 transition-colors cursor-pointer w-full"
                 >
                   <span>📞</span>
-                  <span>0882-0064-87100</span>
+                  <span>0851-5693-0246</span>
                 </button>
                 <a
-                  href="mailto:sogi.contact@gmail.com"
+                  href="mailto:sogi.contactmail@gmail.com"
                   className="flex items-center gap-2 hover:text-blue-400 transition-colors"
                 >
                   <span>✉️</span>
-                  <span>sogi.contact@gmail.com</span>
+                  <span>sogi.contactmail@gmail.com</span>
                 </a>
               </div>
             </div>
