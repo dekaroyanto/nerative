@@ -5,6 +5,16 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import Image from "next/image";
 
 const Hero = () => {
+  const handleWhatsApp = () => {
+    const phoneNumber = "6285156930246";
+    const message =
+      "Halo Sogi, saya tertarik dengan layanan digital yang ditawarkan";
+    window.open(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+      "_blank",
+    );
+  };
+
   return (
     <section id="beranda" className="pt-25 pb-20 px-6 max-w-7xl mx-auto">
       <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -23,7 +33,7 @@ const Hero = () => {
           </motion.div>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
             Kembangkan{" "}
-            <span className="bg-linear-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
               Bisnis Anda
             </span>{" "}
             Secara Digital
@@ -36,7 +46,8 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-linear-to-r from-blue-400 to-teal-400 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 shadow-md"
+              onClick={handleWhatsApp}
+              className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 shadow-md"
             >
               Mulai Sekarang <ArrowRight size={18} />
             </motion.button>
