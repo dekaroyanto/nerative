@@ -46,7 +46,7 @@ const Footer = () => {
 
   // Fungsi untuk handle link Instagram
   const handleInstagram = () => {
-    window.open("https://instagram.com/sogi", "_blank");
+    window.open("https://www.instagram.com/sogi.id/", "_blank");
   };
 
   return (
