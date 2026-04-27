@@ -50,19 +50,27 @@ export const metadata = {
   openGraph: {
     title: "Sogi - Solusi Digital untuk Bisnis Modern",
     description:
-      "Jasa pembuatan website, admin marketplace, dan digital advertising terpercaya untuk bisnis Anda.",
-    url: "https://sogi.vercel.app/",
+      "Jasa pembuatan website, admin marketplace, dan digital advertising untuk bisnis Anda.",
+    url: "https://sogi.vercel.app",
     siteName: "Sogi",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1777256849726-86bb839f6236?q=80&w=926&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        url: "https://sogi.vercel.app/og-image?useHero=true",
         width: 1200,
         height: 630,
-        alt: "Sogi - Solusi Digital",
+        alt: "Sogi - Solusi Digital untuk Bisnis Modern",
       },
     ],
     locale: "id_ID",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sogi - Solusi Digital untuk Bisnis Modern",
+    description:
+      "Jasa pembuatan website, admin marketplace, dan digital advertising .",
+    images: ["https://sogi.vercel.app/og-image?useHero=true"],
+    creator: "@sogi",
   },
 
   alternates: {
