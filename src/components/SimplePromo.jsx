@@ -63,7 +63,7 @@ const SimplePromo = () => {
   const handleWhatsApp = () => {
     const phoneNumber = "6285156930246";
     const message =
-      "Halo Nerative, saya tertarik dengan promo launching mulai Rp 300rb.";
+      "Halo Sogi, saya tertarik dengan promo launching mulai Rp 300rb.";
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
       "_blank",
